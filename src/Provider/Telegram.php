@@ -88,7 +88,7 @@ class Telegram extends AbstractAdapter implements AdapterInterface
     public function authenticate()
     {
         $this->logger->info(sprintf('%s::authenticate()', get_class($this)));
-        if (!$_GET['hash']) {
+        if (!isset($_GET['hash'])) {
             $this->authenticateBegin();
         } else {
             $this->authenticateCheckError();

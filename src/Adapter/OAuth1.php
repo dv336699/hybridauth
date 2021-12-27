@@ -278,10 +278,10 @@ abstract class OAuth1 extends AbstractAdapter implements AdapterInterface
             [HttpClient\Util::getCurrentUrl(true)]
         );
 
-        $denied = $_GET['denied'];
-        $oauth_problem = $_GET['oauth_problem'];
-        $oauth_token = $_GET['oauth_token'];
-        $oauth_verifier = $_GET['oauth_verifier'];
+        $denied = $_GET['denied'] ?? null;
+        $oauth_problem = $_GET['oauth_problem'] ?? null;
+        $oauth_token = $_GET['oauth_token'] ?? null;
+        $oauth_verifier = $_GET['oauth_verifier'] ?? null;
 
         if ($denied) {
             throw new AuthorizationDeniedException(
