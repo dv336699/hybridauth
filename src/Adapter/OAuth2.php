@@ -362,7 +362,7 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
      */
     protected function authenticateCheckError()
     {
-        $error = filter_var($_GET['error'], FILTER_SANITIZE_SPECIAL_CHARS);
+        $error = filter_var($_GET['error'] ?? null, FILTER_SANITIZE_SPECIAL_CHARS);
 
         if (!empty($error)) {
             $error_description = filter_var($_GET['error_description'], FILTER_SANITIZE_SPECIAL_CHARS);
