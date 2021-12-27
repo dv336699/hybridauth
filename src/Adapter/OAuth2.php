@@ -311,7 +311,7 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
         try {
             $this->authenticateCheckError();
 
-            $code = $_REQUEST['code'];
+            $code = $_SERVER['REQUEST_METHOD'] === 'POST' ? $_POST['code'] : $_GET['code'];
 
             if (empty($code)) {
                 $this->authenticateBegin();
@@ -408,8 +408,8 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
             [HttpClient\Util::getCurrentUrl(true)]
         );
 
-        $state = $_REQUEST['state'];
-        $code = $_REQUEST['code'];
+        $state = $_SERVER['REQUEST_METHOD'] === 'POST' ? $_POST['state'] : $_GET['state'];
+        $code = $_SERVER['REQUEST_METHOD'] === 'POST' ? $_POST['code'] : $_GET['code'];
 
         /**
          * Authorization Request State
